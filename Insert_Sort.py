@@ -6,33 +6,29 @@ def Conditions(array,step,start):
         return False
 
 
-def InsertionSortStep(array,step=1,start=1):
+def InsertionSortStep(array,step=1,start=0):
     # Сортировка вставкой в массиве array, с шагом step, номер элемента i
     test=Conditions(array,step,start)
-    if test==True:
-        current=array[start]  
-        j=start+step
-        Flag=False
-        while array[j]<current:
-            Flag=True
-            Target=array[j]
-            if j+step<len(array):
-                if array[j+step]<current:
-                    j+=step
-                else:
-                    break
+    if test==True:  
+        for j in range(start+step,len(array),step):
+            key=array[j]
+            i=j-step
+            if i<len(array) and i>=0:
+                while array[i]>key and i>=0:
+                    array[i+step]=array[i]
+
+                    i-=step 
+                else: 
+                    array[i+step]=key
             else:
                 break
-        if Flag==True:
-            array[j]=current
-            array[start]=Target
         return array
     else:
         return False
 
 
 """
-a=[8,6,5,4,3,2,1]
+a=[1,6,5,4,3,2,7]
 print(a)
-print(InsertionSortStep(a,5,1))
+print(InsertionSortStep(a,3,1))
 """

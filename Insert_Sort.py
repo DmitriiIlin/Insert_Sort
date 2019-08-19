@@ -21,16 +21,22 @@ def KnuthSequence(array_size):
             Knuth_Numbers.append(Numbers[Numbers_size])
             Numbers_size-=1
         return Knuth_Numbers
+    elif array_size==0:
+        return [1]
     else:
         return []
 
 
 def ShellSort(array):
     #Сортировка массива методом Шелла
-    Knuth_numbers=KnuthSequence(len(array))
-    for i in range(0,len(Knuth_numbers)):
-        array=InsertionSortStep(array,Knuth_numbers[i],i)
-    return array        
+    if len(array)>1:
+        Knuth_numbers=KnuthSequence(len(array))
+        for i in range(0,len(Knuth_numbers)):
+            array=InsertionSortStep(array,Knuth_numbers[i],i)
+            return array
+    else:
+        return array
+
 
 def InsertionSortStep(array,step=1,start=0):
     # Сортировка вставкой в массиве array, с шагом step, номер элемента i
@@ -51,11 +57,12 @@ def InsertionSortStep(array,step=1,start=0):
     else:
         return False
 
-
 """
 a=[1,6,5,4,3,2,7,67,44,23,567,12,45,67]
 print(a)
+b=[0]
 #print(InsertionSortStep(a,3,1))
 print(KnuthSequence(len(a)))
-print(ShellSort(a))
+print(ShellSort(b))
+print(KnuthSequence(0))
 """

@@ -29,7 +29,7 @@ def ShellSort(array):
     #Сортировка массива методом Шелла
     Knuth_numbers=KnuthSequence(len(array))
     for i in range(0,len(Knuth_numbers)):
-        array=InsertionSortStep(array,Knuth_numbers[i],0)
+        array=InsertionSortStep(array,Knuth_numbers[i],i)
     return array        
 
 def InsertionSortStep(array,step=1,start=0):

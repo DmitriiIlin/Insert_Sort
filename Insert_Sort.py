@@ -5,20 +5,22 @@ def Conditions(array,step,start):
     else:
         return False
 
-
-
 def KnuthSequence(array_size):
     #Ф-ция вычесляет интервальную последовательность целых чисел
     Numbers=[]
     Knuth_Numbers=[]
     number=1
-    if array_size>=1:
-        while array_size>number:
-            Numbers.append(number)
+    if array_size>0:
+        Numbers.append(number)
+        while array_size>=number:
             number=3*number+1
-        Numbers_size=len(Numbers)-1
-        while Numbers_size>=0:
-            Knuth_Numbers.append(Numbers[Numbers_size])
+            if number>=array_size:
+                break
+            else:
+                Numbers.append(number)
+        Numbers_size=len(Numbers)
+        while Numbers_size>0:
+            Knuth_Numbers.append(Numbers[Numbers_size-1])
             Numbers_size-=1
         return Knuth_Numbers
     elif array_size==0:
@@ -64,5 +66,6 @@ b=[0]
 #print(InsertionSortStep(a,3,1))
 print(KnuthSequence(len(a)))
 print(ShellSort(b))
-print(KnuthSequence(0))
+
+print(KnuthSequence(5))
 """

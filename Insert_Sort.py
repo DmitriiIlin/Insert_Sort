@@ -35,7 +35,7 @@ def ShellSort(array):
         Knuth_numbers=KnuthSequence(len(array))
         for i in range(0,len(Knuth_numbers)):
             array=InsertionSortStep(array,Knuth_numbers[i],i)
-            return array
+        return array
     else:
         return array
 
@@ -61,11 +61,7 @@ def InsertionSortStep(array,step=1,start=0):
 
 """
 a=[1,6,5,4,3,2,7,67,44,23,567,12,45,67]
-print(a)
-b=[0]
-#print(InsertionSortStep(a,3,1))
-print(KnuthSequence(len(a)))
-print(ShellSort(b))
+print(ShellSort(a))
 
 print(KnuthSequence(5))
 """
